@@ -22,11 +22,11 @@ class CharacterTranslatorTest {
     void isSupportedEnglishCharacterWorksAsExpected() {
         CharacterTranslator characterTranslator = new CharacterTranslator();
 
-        // word containing spaces is not valid English word
-        assertFalse(characterTranslator.isSupportedEnglishCharacter("ABC DEF"));
+        // should be true for valid character
+        assertTrue(characterTranslator.isSupportedEnglishCharacter("A"));
 
-        // word with unsupported English character isn't valid English word
-        assertFalse(characterTranslator.isSupportedEnglishCharacter("£GG"));
+        // should be false for invalid character
+        assertFalse(characterTranslator.isSupportedEnglishCharacter("£"));
     }
 
     @org.junit.jupiter.api.Test
