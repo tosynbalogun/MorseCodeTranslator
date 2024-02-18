@@ -1,11 +1,11 @@
 import java.util.HashMap;
 
-public class CharacterTranslator {
+public class CharacterConverter {
     private final HashMap<String, String> englishToMorse;
     private final HashMap<String, String> morseToEnglish;
-    public CharacterTranslator() {
-        this.englishToMorse = new HashMap<String, String>();
-        this.morseToEnglish = new HashMap<String, String>();
+    public CharacterConverter() {
+        this.englishToMorse = new HashMap<>();
+        this.morseToEnglish = new HashMap<>();
 
         // populate the English to Morse Hash Map
         this.englishToMorse.put("A", "*-");
@@ -52,11 +52,11 @@ public class CharacterTranslator {
         this.englishToMorse.forEach((english, morse) -> this.morseToEnglish.put(morse, english));
     }
 
-    public String translateEnglishToMorse(String englishCharacter) {
+    public String convertEnglishToMorse(String englishCharacter) {
         return this.englishToMorse.get(englishCharacter);
     }
 
-    public String translateMorseToEnglish(String morseCharacter) {
+    public String convertMorseToEnglish(String morseCharacter) {
         return this.morseToEnglish.get(morseCharacter);
     }
 

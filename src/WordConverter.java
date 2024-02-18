@@ -1,8 +1,8 @@
-public class WordTranslator {
-    private final CharacterTranslator characterTranslator;
+public class WordConverter {
+    private final CharacterConverter characterConverter;
 
-    public WordTranslator() {
-        this.characterTranslator = new CharacterTranslator();
+    public WordConverter() {
+        this.characterConverter = new CharacterConverter();
     }
 
     private void confirmEnglishWordValidity(String word) throws IllegalArgumentException {
@@ -14,7 +14,7 @@ public class WordTranslator {
         // check if each character is supported by the translator
         String[] wordCharacters = word.split("");
         for (String wordCharacter : wordCharacters) {
-            if (!this.characterTranslator.isSupportedEnglishCharacter(wordCharacter)) {
+            if (!this.characterConverter.isSupportedEnglishCharacter(wordCharacter)) {
                 throw new IllegalArgumentException(
                         String.format("The '%s' English character is not supported by the translator", wordCharacter)
                 );
@@ -26,7 +26,7 @@ public class WordTranslator {
         // check if each character group is supported by the translator
         String[] morseCharacterGroups = word.split(" ");
         for (String morseCharacterGroup: morseCharacterGroups) {
-            if (!this.characterTranslator.isSupportedMorseCharacter(morseCharacterGroup)) {
+            if (!this.characterConverter.isSupportedMorseCharacter(morseCharacterGroup)) {
                 throw new IllegalArgumentException(
                         String.format("The '%s' Morse character group is not supported by the translator", morseCharacterGroup)
                 );
@@ -34,7 +34,7 @@ public class WordTranslator {
         }
     }
 
-    public String translateEnglishToMorse(String englishWord) throws IllegalArgumentException {
+    public String convertEnglishToMorse(String englishWord) throws IllegalArgumentException {
         // confirm that the word is valid English
         this.confirmEnglishWordValidity(englishWord);
 
@@ -43,7 +43,7 @@ public class WordTranslator {
 
         for (String englishCharacter : englishCharacters) {
             // add corresponding Morse character
-            morseWord = morseWord.concat(this.characterTranslator.translateEnglishToMorse(englishCharacter));
+            morseWord = morseWord.concat(this.characterConverter.convertEnglishToMorse(englishCharacter));
             // add a separating space
             morseWord = morseWord.concat(" ");
         }
@@ -54,7 +54,7 @@ public class WordTranslator {
         return morseWord;
     }
 
-    public String translateMorseToEnglish(String morseWord) throws IllegalArgumentException {
+    public String convertMorseToEnglish(String morseWord) throws IllegalArgumentException {
         // confirm that the word is valid Morse
         this.confirmMorseWordValidity(morseWord);
 
@@ -63,7 +63,7 @@ public class WordTranslator {
 
         for (String morseCharacterGroup: morseCharacterGroups) {
             // add corresponding English character
-            englishWord = englishWord.concat(this.characterTranslator.translateMorseToEnglish(morseCharacterGroup));
+            englishWord = englishWord.concat(this.characterConverter.convertMorseToEnglish(morseCharacterGroup));
         }
 
         return englishWord;
