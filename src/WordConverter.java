@@ -16,7 +16,7 @@ public class WordConverter {
         for (String wordCharacter : wordCharacters) {
             if (!this.characterConverter.isSupportedEnglishCharacter(wordCharacter)) {
                 throw new IllegalArgumentException(
-                        String.format("The '%s' English character is not supported by the translator", wordCharacter)
+                        String.format("The '%s' English character is not supported by the converter", wordCharacter)
                 );
             }
         }
@@ -28,7 +28,7 @@ public class WordConverter {
         for (String morseCharacterGroup: morseCharacterGroups) {
             if (!this.characterConverter.isSupportedMorseCharacter(morseCharacterGroup)) {
                 throw new IllegalArgumentException(
-                        String.format("The '%s' Morse character group is not supported by the translator", morseCharacterGroup)
+                        String.format("The '%s' Morse character group is not supported by the converter", morseCharacterGroup)
                 );
             }
         }
